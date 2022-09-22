@@ -3,6 +3,7 @@ import streamlit.components.v1 as components
 from datetime import datetime, date
 import plotly.graph_objects as go
 import pandas as pd
+import pytz
 #import pyecharts.options as opts
 #from pyecharts.charts import Gauge
 # mapbox_access_token = open(".mapbox_token").read()
@@ -87,7 +88,6 @@ def main():
             """,
             unsafe_allow_html=True,
         )
-
     #page = st.markdown(
     ##            f"""
     #            <style>
@@ -185,19 +185,21 @@ def main():
 
     st.markdown("###")
     st.markdown("----------------------------------")
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     with col1:
         st.subheader("#35排磨损传感器当前状态")
         current_thickness1 = str(sensen1_data) + " mm"
         delta_thickness1 = str(sensen1_data-325) + " mm"
-        st.markdown("最新状态时间： " + datetime.today().strftime('%Y-%m-%d %H:%M:%S'))
+        hktimez = pytz.timezone("Asia/Hong_Kong") 
+        timenowhk = datetime.now(hktimez)
+        st.markdown("最新状态时间： " + timenowhk.strftime('%Y-%m-%d %H:%M:%S'))
         st.metric(label="当前磨损状态", value=current_thickness1, delta=delta_thickness1)
 
     with col2:
         st.subheader("#37排传感器磨损传感器当前状态")
         current_thickness3 = str(sensen3_data) + " mm"
         delta_thickness3 = str(sensen3_data-325) + " mm"
-        st.markdown("最新状态时间：" + datetime.today().strftime('%Y-%m-%d %H:%M:%S'))
+        st.markdown("最新状态时间：" + timenowhk.strftime('%Y-%m-%d %H:%M:%S'))
         st.metric(label="当前磨损状态", value=current_thickness3, delta=delta_thickness3)
         #with col4:
     #with col3:
