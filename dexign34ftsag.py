@@ -196,7 +196,7 @@ def main():
         st.metric(label="当前磨损状态", value=current_thickness1, delta=delta_thickness1)
 
     with col2:
-        st.subheader("#37排传感器磨损传感器当前状态")
+        st.subheader("#37排磨损传感器当前状态")
         current_thickness3 = str(sensen3_data) + " mm"
         delta_thickness3 = str(sensen3_data-325) + " mm"
         st.markdown("最新状态时间：" + timenowhk.strftime('%Y-%m-%d %H:%M:%S'))
@@ -211,7 +211,7 @@ def main():
         
     
     
-    installDate = date(2022, 9, 20)
+    installDate = date(2022, 9, 25)
     currentDate = date.today()
     deltaDays = (currentDate - installDate).days
     st.subheader("已运行时间： " + str(deltaDays) + " Days")
