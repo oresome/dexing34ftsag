@@ -231,12 +231,12 @@ def main():
     #    im3 = Image.open("photos/image3.jpg")
     #    st.image(im3)
     #@st.cache
-    st.markdown("建设中，敬请期待！")
-    #iframeLINK = "https://dexing-pump-nzjah350-7b9d991d6fe-1306024390.tcloudbaseapp.com/huize.html"
-    #st.write(
-    ##        f'<iframe src=' + iframeLINK + ' height = "1000" width = "100%"></iframe>',
-    #        unsafe_allow_html=True,
-    #)
+    #st.markdown("建设中，敬请期待！")
+    iframeLINK = "https://dexing-pump-nzjah350-7b9d991d6fe-1306024390.tcloudbaseapp.com/Dexing.html"
+    st.write(
+            f'<iframe src=' + iframeLINK + ' height = "1000" width = "100%"></iframe>',
+            unsafe_allow_html=True,
+    )
     st.markdown("_______________________________________________________________________")
 
     ###  第三部分  磨损趋势  ###
