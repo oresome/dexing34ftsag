@@ -133,10 +133,20 @@ def main():
 
     #serieschart_plot(sensen1_dt, sensen1_data, sensen2_dt, sensen2_data, sensen3_dt, sensen3_data)
     #indicator_plot(latestRead)
-    sensen1_data = 325
-    sensen2_data = 325
-    sensen3_data = 325
-    sensen4_data = 0
+
+    df1 = pd.read_csv("https://raw.githubusercontent.com/oresome/dexing34ftsag/main/sensorThickness.csv")
+    today = date.today()
+
+    df1['日期'] = pd.to_datetime(df1['日期'], format="%d/%m/%Y")
+    mask = df1['日期'].dt.date == today
+    filterDF = df1.loc[mask]
+
+    sensen1_data = int(filterDF["#35排传感器"].iloc[0])
+    #sensen2_data = 325
+    sensen3_data = int(filterDF["#37排传感器"].iloc[0])
+    #sensen4_data = 0
+    datindex = filterDF.index
+    filterDF_plot = df1.loc[:datindex[0]]
 
 
     ###  第一部分  模型展示  ###
@@ -241,8 +251,8 @@ def main():
 
     ###  第三部分  磨损趋势  ###
     st.subheader("磨损历史数据")
-    df = pd.read_csv("sensorThickness.csv")
-    serieschart_plot(df)
+    #df = pd.read_csv("sensorThickness.csv")
+    serieschart_plot(filterDF_plot)
 
 
 
